@@ -2,6 +2,8 @@ const chalk = require("chalk");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
+operation();
+
 function operation() {
   inquirer
     .prompt([
@@ -22,6 +24,12 @@ function operation() {
       const action = answer["action"];
       if (action == "Criar Conta") {
         createAccount();
+      } else if (action == "Depositar") {
+      } else if (action == "Consultar Saldo") {
+      } else if (action == "Sacar") {
+      } else if (action == "Sair") {
+        console.log(chalk.bgBlue.black("Obrigado por usar o Accounts!"));
+        process.exit();
       }
     })
     .catch((error) => console.log(error));
@@ -51,7 +59,7 @@ function builderAccount() {
 
       if (fs.existsSync(`accounts/${accountName}.json`)) {
         console.log(
-          chalk.bgRed.black("Está conta já existe, escolha outra nome!")
+          chalk.bgRed.black("Está conta já existe, escolha outro nome!")
         );
         builderAccount();
         return;
